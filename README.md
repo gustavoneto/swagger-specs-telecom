@@ -1,5 +1,9 @@
 __Especificações técnicas de conteúdo dos swaggers Algar Telecom__
 
+**Toda API deve ser feita no modelo `design first` **
+
+Desenho da API em swagger, passagem para aprovação do Marcus Valério ou Ayala e posterior implementação no Gateway.
+
 # Description
 
 __Todo swagger e API devem ter:__
@@ -8,6 +12,11 @@ __Todo swagger e API devem ter:__
 * Descrições nas operações de cada recurso
 * Descrições nos parâmetros do payload (request e response) quando aplicável.
 * Descrições nos query parâmeters (quando aplicável)
+* Log do payload de entrada
+* Log do payload após transformações (caso necessário)
+* Log do retorno do back-end 
+* Log do retorno do back-end pós transformações (caso necessário)
+* Testes de regressão escritos no Postman e entregues junto com a API e o Swagger
 
 # Definitions
 
