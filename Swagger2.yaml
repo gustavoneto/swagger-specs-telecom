@@ -1,0 +1,61 @@
+swagger: '2.0'
+info:
+  title: API Example
+  description: API de exemplo para construção de [swagger 3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md) com as especificações da [Algar Telecom](http://algartelecom.com.br)
+  version: 1.0.0
+tags:
+  - name: Resource
+    description: Resource Description.
+host: 127.0.0.1:9001
+basePath: '/resource-api/v1'
+security: 
+    - client_id: []
+    - access_token: []
+securityDefinitions:
+  client_id:
+    type: "apiKey"
+    in: "header"
+    name: "client_id"
+  access_token: 
+    type: "apiKey"
+    in: "header"
+    name: "access_token"
+schemes: 
+  - https
+consumes: 
+  - application/json
+produces: 
+  - application/json
+paths: 
+  /resources/{resourceId}/operation:
+    post:
+      tags: 
+        - Resource
+      x-restictedFields: ['address.cep', 'address.number', 'address.street', 'documentNumber']
+      x-destination: "http://127.0.0.1:9001"
+      description: Register new resource
+      parameters: 
+        - in: path
+          name: resourceId
+          required: true
+          description: resource id
+          type: string
+        - in: body
+          name: requestBody
+          schema:
+            $ref: '#/definitions/requestBody'
+      responses:
+        '200':
+          description: response
+          schema:
+            type: string
+            example: "teste"
+definitions:
+  requestBody:
+    type: object
+    properties:
+      filename:
+        type: array
+        items:
+          type: string
+          format: binary
