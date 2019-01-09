@@ -39,16 +39,9 @@ paths:
             type: string
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
-              type: object
-              properties:
-                filename:
-                  type: array
-                  items:
-                    type: string
-                    format: binary
-       
+              $ref: '#/components/schemas/requestBody'
       responses:
         '200':
           description: response
@@ -65,4 +58,12 @@ components:
         authorizationCode:
           authorizationUrl: https://example.com/api/oauth/dialog
           tokenUrl: https://example.com/api/oauth/token
-            
+  schemas:
+    requestBody:
+      type: object
+      properties:
+        filename:
+          type: array
+          items:
+            type: string
+            format: binary
